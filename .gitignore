@@ -1,0 +1,64 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+.venv/
+.venv*/
+venv/
+ENV/
+env/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+
+# Research Data (Exclude dataset directories for GitHub reproducibility standard)
+ppg_heartrate_ml/data/samples_train_csv/
+ppg_heartrate_ml/data/samples_test_csv/
+ppg_heartrate_ml/data/ppg_10s_windows_rest/
+data/samples_train_csv/
+data/samples_test_csv/
+data/ppg_10s_windows_rest/
+
+# Output directories & figures (Generated dynamically upon running scripts)
+output_plots/
+figures/
+results/
+charts/
+*.png
+*.csv
+*.json
+*.md
+!README.md
+!data/README.md
+!rq3_dynamic_models/shared/MODEL_SELECTION_RATIONALE.md
