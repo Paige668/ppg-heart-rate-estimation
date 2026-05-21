@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Heart Rate Prediction from PPG Signals Using Machine Learning Approaches
 
 This repository contains the official implementation of the signal preprocessing pipeline and machine learning models for the thesis:
@@ -188,3 +189,7 @@ python rq2_dynamic_models/comparison/generate_comparison_results.py
 1. **CPU/GPU Consistency:** All deep learning loops (CNN) are set to run on `CPU` (`DEVICE = torch.device("cpu")`) to prevent CUDA tensor alignment variances on different hardware.
 2. **Fixed Random Splits:** All train/validation splits in the dynamic scripts are hardcoded to `split_seed=42` to guarantee that the models are consistently evaluated on the exact same unseen test samples.
 3. **Collinearity Protection:** Tree models utilize standard `StandardScaler` fitted *strictly* on training indices to prevent information leakage.
+=======
+# ppg-heart-rate-estimation
+Code for heart rate estimation from PPG signals using machine learning and deep learning methods. Includes preprocessing pipelines and scripts for thesis experiments.
+>>>>>>> c7518613646862f53d52f281b09ea1b52f9af54e
