@@ -1,4 +1,4 @@
-"""Tasks 7-12: split → scale → train LR & RF → evaluate → summary table"""
+"""Data split, scaling, model training, evaluation, and summary table generation."""
 import os, warnings
 import numpy as np
 import pandas as pd
@@ -18,15 +18,15 @@ FIG_DIR = "figures"
 os.makedirs(RES_DIR, exist_ok=True)
 os.makedirs(FIG_DIR, exist_ok=True)
 
-# ── Load features ─────────────────────────────────────────────────────────────
+ # ── Load features ─────────────────────────────────────────────────────────────
 df = pd.read_csv(os.path.join(RES_DIR, "features.csv"))
 feature_cols = [c for c in df.columns if c not in ("file", "HR")]
 X = df[feature_cols].values
 y = df["HR"].values
 print(f"Dataset: {X.shape[0]} samples × {X.shape[1]} features")
 
-# ── Task 7: 80/20 split ───────────────────────────────────────────────────────
-print("\n=== Task 7: Train/Test Split (80/20) ===")
+ # ── Train/Test split (80/20) ─────────────────────────────────────────────────
+print("\n=== Train/Test Split (80/20) ===")
 X_train_raw, X_test_raw, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
@@ -40,8 +40,8 @@ df.iloc[train_idx].to_csv(os.path.join(RES_DIR, "train_raw.csv"), index=False)
 df.iloc[test_idx].to_csv(os.path.join(RES_DIR, "test_raw.csv"),  index=False)
 print("  Saved: results/train_raw.csv, results/test_raw.csv")
 
-# ── Task 8: Feature scaling (fit on train only) ───────────────────────────────
-print("\n=== Task 8: Feature Scaling (StandardScaler) ===")
+ # ── Feature scaling (fit on train only) ───────────────────────────────────────
+print("\n=== Feature Scaling (StandardScaler) ===")
 scaler    = StandardScaler()
 X_train   = scaler.fit_transform(X_train_raw)
 X_test    = scaler.transform(X_test_raw)
@@ -60,8 +60,8 @@ def evaluate(name, y_true, y_pred):
     print(f"  {name:30s}  MAE={mae:.4f} bpm   RMSE={rmse:.4f} bpm")
     return mae, rmse
 
-# ── Task 9: Linear Regression ─────────────────────────────────────────────────
-print("\n=== Task 9: Linear Regression ===")
+ # ── Linear Regression ────────────────────────────────────────────────────────
+print("\n=== Linear Regression ===")
 lr = LinearRegression()
 lr.fit(X_train, y_train)
 y_pred_lr = lr.predict(X_test)
@@ -71,8 +71,8 @@ pd.DataFrame({"HR_true": y_test, "HR_pred_LR": y_pred_lr}).to_csv(
     os.path.join(RES_DIR, "lr_predictions.csv"), index=False)
 print("  Saved: results/lr_predictions.csv")
 
-# ── Task 10: Random Forest ────────────────────────────────────────────────────
-print("\n=== Task 10: Random Forest ===")
+ # ── Random Forest ────────────────────────────────────────────────────────────
+print("\n=== Random Forest ===")
 rf = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)
 rf.fit(X_train, y_train)
 y_pred_rf = rf.predict(X_test)
@@ -94,8 +94,8 @@ fig.savefig(os.path.join(FIG_DIR, "rf_feature_importance.png"), dpi=150)
 plt.close()
 print("  Saved: figures/rf_feature_importance.png")
 
-# ── Task 11: Scatter plots ────────────────────────────────────────────────────
-print("\n=== Task 11: Evaluation Plots ===")
+ # ── Evaluation Plots ─────────────────────────────────────────────────────────
+print("\n=== Evaluation Plots ===")
 fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 for ax, y_pred, title, mae, rmse in zip(
         axes,
@@ -119,8 +119,8 @@ fig.savefig(os.path.join(FIG_DIR, "ml_model_scatter.png"), dpi=150)
 plt.close()
 print("  Saved: figures/ml_model_scatter.png")
 
-# ── Task 12: Model Comparison Summary Table ───────────────────────────────────
-print("\n=== Task 12: Model Comparison Summary Table ===")
+ # ── Model Comparison Summary Table ───────────────────────────────────────────
+print("\n=== Model Comparison Summary Table ===")
 
 # Load peak-based results from Task 4
 peak_raw  = pd.read_csv(os.path.join(RES_DIR, "peak_hr_estimates_raw.csv")).dropna()
@@ -146,4 +146,4 @@ for _, row in summary.iterrows():
     print(f"  {row['Model']:<33} {row['MAE_bpm']:>10.2f} {row['RMSE_bpm']:>11.2f}")
 print("=" * 65)
 print("\nSaved: results/model_summary.csv")
-print("\nAll tasks complete.")
+print("\nAll steps complete.")
