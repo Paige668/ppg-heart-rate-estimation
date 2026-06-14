@@ -1,0 +1,132 @@
+{
+  "ssa": {
+    "cases": [
+      {
+        "case": 1,
+        "heart_freq_hz": 1.6,
+        "corr_before": 0.7969026001862576,
+        "corr_after": 0.8908773709497008,
+        "rmse_before": 0.5358263154378552,
+        "rmse_after": 0.5201635410284055,
+        "dominant_before_hz": 1.625,
+        "dominant_after_hz": 1.625
+      },
+      {
+        "case": 2,
+        "heart_freq_hz": 1.95,
+        "corr_before": 0.7988843576990952,
+        "corr_after": 0.8999278272608279,
+        "rmse_before": 0.5575824022764313,
+        "rmse_after": 0.5151066807962189,
+        "dominant_before_hz": 2.0,
+        "dominant_after_hz": 2.0
+      },
+      {
+        "case": 3,
+        "heart_freq_hz": 2.3,
+        "corr_before": 0.7972634390424254,
+        "corr_after": 0.9147689976415094,
+        "rmse_before": 0.5364491613994526,
+        "rmse_after": 0.49851773554586815,
+        "dominant_before_hz": 2.25,
+        "dominant_after_hz": 2.25
+      }
+    ],
+    "mean_corr_before": 0.7976834656425927,
+    "mean_corr_after": 0.9018580652840127,
+    "mean_rmse_before": 0.5432859597045797,
+    "mean_rmse_after": 0.5112626524568308
+  },
+  "lasso": {
+    "synthetic_cases": [
+      {
+        "case": 1,
+        "heart_freq_hz": 1.55,
+        "top_frequency_hz": 1.560000000000001,
+        "absolute_error_hz": 0.010000000000000897,
+        "active_bins_above_5pct": 5,
+        "top3_power_ratio": 0.7858453230968773,
+        "convergence_warning_count": 0
+      },
+      {
+        "case": 2,
+        "heart_freq_hz": 2.05,
+        "top_frequency_hz": 2.0600000000000014,
+        "absolute_error_hz": 0.010000000000001563,
+        "active_bins_above_5pct": 7,
+        "top3_power_ratio": 0.7892248166682118,
+        "convergence_warning_count": 0
+      },
+      {
+        "case": 3,
+        "heart_freq_hz": 2.4,
+        "top_frequency_hz": 2.4000000000000017,
+        "absolute_error_hz": 1.7763568394002505e-15,
+        "active_bins_above_5pct": 4,
+        "top3_power_ratio": 0.8158898348239637,
+        "convergence_warning_count": 0
+      }
+    ],
+    "real_windows": [
+      {
+        "tag": "80-120 bpm",
+        "sample_file": "sample_1039_HR_100.csv",
+        "top_frequency_hz": 2.5000000000000018,
+        "convergence_warning_count": 0
+      },
+      {
+        "tag": "120-140 bpm",
+        "sample_file": "sample_1118_HR_130.csv",
+        "top_frequency_hz": 2.1600000000000015,
+        "convergence_warning_count": 0
+      },
+      {
+        "tag": "140+ bpm",
+        "sample_file": "sample_1000_HR_155.csv",
+        "top_frequency_hz": 2.580000000000002,
+        "convergence_warning_count": 0
+      }
+    ],
+    "synthetic_warning_total": 0,
+    "real_warning_total": 0,
+    "mean_top_frequency_error_hz": 0.006666666666668079,
+    "mean_top3_power_ratio": 0.7969866581963508
+  },
+  "joss": {
+    "separable_case": {
+      "heart_freq_hz": 1.5,
+      "motion_freq_hz": 2.0,
+      "ppg_peak_freqs_hz": [
+        1.5000000000000009,
+        1.9800000000000013
+      ],
+      "motion_peak_freqs_hz": [
+        2.0
+      ],
+      "valid_freqs_hz": [
+        1.5000000000000009
+      ],
+      "selected_hr_bpm": 90.00000000000006
+    },
+    "overlap_case": {
+      "heart_freq_hz": 2.45,
+      "motion_freq_hz": 2.5,
+      "ppg_peak_freqs_hz": [
+        2.2600000000000016,
+        2.3800000000000017,
+        2.4800000000000018
+      ],
+      "motion_peak_freqs_hz": [
+        2.5
+      ],
+      "valid_freqs_hz": [
+        2.2600000000000016,
+        2.3800000000000017
+      ],
+      "selected_hr_bpm": 142.8000000000001
+    },
+    "separable_preserved_heart": true,
+    "separable_removed_motion": true,
+    "overlap_removed_true_heart": true
+  }
+}
