@@ -50,6 +50,15 @@ ppg_heartrate_ml/
     │
     └── comparison/                    # Thesis Comparison Results Generator
         └── generate_comparison_results.py # Aggregates all model CSVs and builds charts (Figures 5.4 & 5.5)
+│
+├── cnn_loss_justification/            # Examiner Revision: CNN Loss Weights Justification
+│   ├── core_files/                    # Core scripts for CNN loss experiments
+│   ├── diagrams/                      # Generated trade-off charts
+│   └── experiment_results/            # Results across configurations
+│
+└── pipeline_validation/               # Examiner Revision: SSA, LASSO, JOSS Validation
+    ├── core_files/                    # Core validation scripts
+    └── validation_results/            # Extracted metrics and plots
 ```
 
 ---
